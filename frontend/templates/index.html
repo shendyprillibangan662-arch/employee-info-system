@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <h1 class="main-title">Employee Information System</h1>
+
+    <div class="nav-container">
+        <a href="{{ url_for('dashboard') }}" class="btn-nav active">DASHBOARD</a>
+        <a href="{{ url_for('employees') }}" class="btn-nav">EMPLOYEES</a>
+        <a href="{{ url_for('logout') }}" class="btn-nav" style="float: right;">LOGOUT</a>
+    </div>
+
+    <div class="dashboard-cards">
+        <div class="card active">
+            <h3>Active Employees</h3>
+            <div class="number">{{ active }}</div>
+        </div>
+        <div class="card permanent">
+            <h3>Permanent</h3>
+            <div class="number">{{ permanent }}</div>
+        </div>
+        <div class="card temporary">
+            <h3>Temporary</h3>
+            <div class="number">{{ temporary }}</div>
+        </div>
+        <div class="card separated">
+            <h3>Separated</h3>
+            <div class="number">{{ separated }}</div>
+        </div>
+    </div>
+
+    <div class="log-section">
+        <div class="log-header">
+            <span>Recent Activities</span>
+            <button class="btn-clear">Clear Activities</button>
+        </div>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>ACTIVITY</th>
+                    <th>EMPLOYEE</th>
+                    <th>DATE</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for log in activities %}
+                <tr>
+                    <td>{{ log.id }}</td>
+                    <td>{{ log.activity }}</td>
+                    <td>{{ log.employee }}</td>
+                    <td>{{ log.date }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>

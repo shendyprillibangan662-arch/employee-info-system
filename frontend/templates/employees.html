@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employees</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <h1 class="main-title">Employee Information System</h1>
+
+    <div class="nav-container">
+        <a href="{{ url_for('dashboard') }}" class="btn-nav">DASHBOARD</a>
+        <a href="{{ url_for('employees') }}" class="btn-nav active">EMPLOYEES</a>
+        <a href="{{ url_for('logout') }}" class="btn-nav" style="float: right;">LOGOUT</a>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; align-items: center; margin: 15px 0;">
+        <input type="text" id="searchInput" class="search-box" placeholder="Search employees..." style="margin: 0; width: 70%;">
+        <a href="{{ url_for('add') }}" class="btn-submit" style="width: 25%; text-align: center; text-decoration: none; display: inline-block; padding: 12px; box-sizing: border-box;">+ ADD EMPLOYEE</a>
+    </div>
+
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>EMPLOYEE ID</th>
+                <th>LAST NAME</th>
+                <th>FIRST NAME</th>
+                <th>STATUS</th>
+                <th>ACTION</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for emp in employees %}
+            <tr>
+                <td>{{ emp.id }}</td>
+                <td>{{ emp.last_name }}</td>
+                <td>{{ emp.first_name }}</td>
+                <td>
+                    {% if emp.status is defined %}
+                        <span class="status-{{ emp.status.lower() }}">{{ emp.status }}</span>
+                    {% else %}
+                        <span>Active</span>
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="{{ url_for('edit', id=emp.id) }}" class="btn-action btn-view">View</a>
+                    <a href="{{ url_for('edit', id=emp.id) }}" class="btn-action btn-edit">Edit</a>
+                    <a href="{{ url_for('delete', id=emp.id) }}" class="btn-action btn-delete">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <script>
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                window.location.href = "{{ url_for('employees') }}?search=" + this.value;
+            }
+        });
+    </script>
+
+</body>
+</html>

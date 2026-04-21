@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Employee - Info System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <h1 class="main-title">Edit Employee</h1>
+
+    <div class="nav-container">
+        <a href="{{ url_for('dashboard') }}" class="btn-nav">DASHBOARD</a>
+        <a href="{{ url_for('employees') }}" class="btn-nav">EMPLOYEES</a>
+        <a href="{{ url_for('logout') }}" class="btn-nav" style="float: right;">LOGOUT</a>
+    </div>
+
+    <div class="login-container" style="max-width: 500px;">
+        <form method="POST" class="login-form">
+            <div class="form-group">
+                <label style="color: rgba(255,255,255,0.6); margin-bottom: 8px; display: block; font-size: 14px; letter-spacing: 1px;">FIRST NAME</label>
+                <input type="text" name="first_name" value="{{ employee.first_name }}" required class="form-control">
+            </div>
+            <div class="form-group">
+                <label style="color: rgba(255,255,255,0.6); margin-bottom: 8px; display: block; font-size: 14px; letter-spacing: 1px;">LAST NAME</label>
+                <input type="text" name="last_name" value="{{ employee.last_name }}" required class="form-control">
+            </div>
+            <div class="form-group">
+                <label style="color: rgba(255,255,255,0.6); margin-bottom: 8px; display: block; font-size: 14px; letter-spacing: 1px;">STATUS</label>
+                <select name="status" class="form-control" required style="background-color: #0f172a; color: white;">
+                    <option value="Active" {% if employee.status == 'Active' %}selected{% endif %}>Active</option>
+                    <option value="Permanent" {% if employee.status == 'Permanent' %}selected{% endif %}>Permanent</option>
+                    <option value="Temporary" {% if employee.status == 'Temporary' %}selected{% endif %}>Temporary</option>
+                    <option value="Separated" {% if employee.status == 'Separated' %}selected{% endif %}>Separated</option>
+                </select>
+            </div>
+            <button type="submit" class="btn-submit">Update Employee</button>
+        </form>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login - Employee Info System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="login-container">
+    <h1 class="main-title">System Login</h1>
+    
+    <div id="flash-container" class="flash-messages" style="display: none;">
+      <div id="flash-error" class="flash-error"></div>
+    </div>
+
+    <form id="loginForm" class="login-form">
+      <div class="form-group">
+        <input type="text" id="username" placeholder="Username" required class="form-control">
+      </div>
+      <div class="form-group">
+        <input type="password" id="password" placeholder="Password" required class="form-control">
+      </div>
+      <button type="submit" class="btn-submit">Login</button>
+    </form>
+  </div>
+  
+  <script src="script.js"></script>
+</body>
+</html>

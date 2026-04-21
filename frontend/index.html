@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 class="main-title">Employee Information System</h1>
+    <div class="nav-container">
+        <a href="index.html" class="btn-nav active">DASHBOARD</a>
+        <a href="employees.html" class="btn-nav">EMPLOYEES</a>
+        <a href="#" id="logoutBtn" class="btn-nav" style="float: right;">LOGOUT</a>
+    </div>
+
+    <div class="dashboard-cards">
+        <div class="card active">
+            <h3>Active Employees</h3>
+            <div class="number" id="stat-active">0</div>
+        </div>
+        <div class="card permanent">
+            <h3>Permanent</h3>
+            <div class="number" id="stat-permanent">0</div>
+        </div>
+        <div class="card temporary">
+            <h3>Temporary</h3>
+            <div class="number" id="stat-temporary">0</div>
+        </div>
+        <div class="card separated">
+            <h3>Separated</h3>
+            <div class="number" id="stat-separated">0</div>
+        </div>
+    </div>
+
+    <div class="log-section">
+        <div class="log-header">
+            <span>Recent Activities</span>
+        </div>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>ACTIVITY</th>
+                    <th>EMPLOYEE</th>
+                    <th>DATE</th>
+                </tr>
+            </thead>
+            <tbody id="activities-table-body">
+                <!-- Activities injected here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
